@@ -1,0 +1,38 @@
+<h1>Welcome to API Project</h1>
+<!-- <app-comment></app-comment> -->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">API Project</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/comments']">Comments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/posts']">Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Albums</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/news']">Get News</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/students']">Get Students</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/addstudent']">Add new Students</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</div>
+<router-outlet></router-outlet>

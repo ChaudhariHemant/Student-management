@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="text-center m-3 text-primary">All Students</h1>
+    <table class="table table-striped w-75 m-auto bg-warning text-white">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of students">
+          <td>{{ i.id }}</td>
+          <td>{{ i.name }}</td>
+          <td>{{ i.email }}</td>
+          <td>
+            <button class="btn btn-primary p-3" [routerLink]="['/editstudent', i.id]">Edit</button>
+          </td>          
+          <td>
+            <button class="btn btn-danger p-3" (click)="deleteHandler(i.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container text-center mt-3">
+      <button class="btn btn-success" [routerLink]="['/addstudent']">Add New Student</button>
+    </div>
+  </div>
+  
