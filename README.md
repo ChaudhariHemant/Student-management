@@ -17,8 +17,7 @@ This project demonstrates CRUD operations (Create, Read, Update, Delete) on stud
 
 
 ## 📂 Project Structure
-Student-Management-System/
-│
+```Student-Management-System/
 ├── Backend (Spring Boot)/
 │   ├── src/
 │   │   ├── main/
@@ -67,7 +66,8 @@ Student-Management-System/
 │   ├── package.json
 │   └── angular.json
 │
-└── README.md              
+└── README.md
+```          
 
 
 
