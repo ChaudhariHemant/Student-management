@@ -1,30 +1,57 @@
+
 <div class="container">
-    <h1 class="text-center m-3 text-primary">All Students</h1>
-    <table class="table table-striped w-75 m-auto bg-warning text-white">
-      <thead>
+  <h1 class="text-center m-3 text-primary">All Students</h1>
+  
+  <!-- Search Bar -->
+  <div class="row mb-3">
+    <div class="col-md-6 offset-md-3">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search by name or email" 
+               [(ngModel)]="searchKeyword" (keyup.enter)="searchStudents()">
+        <button class="btn btn-outline-primary" type="button" (click)="searchStudents()">
+          Search
+        </button>
+        <button class="btn btn-outline-secondary" type="button" (click)="getStudents()">
+          Reset
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
         <tr>
           <th>ID</th>
           <th>Name</th>
           <th>Email</th>
-          <th colspan="2">Action</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let i of students">
-          <td>{{ i.id }}</td>
-          <td>{{ i.name }}</td>
-          <td>{{ i.email }}</td>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.email }}</td>
           <td>
-            <button class="btn btn-primary p-3" [routerLink]="['/editstudent', i.id]">Edit</button>
-          </td>          
-          <td>
-            <button class="btn btn-danger p-3" (click)="deleteHandler(i.id)">Delete</button>
+            <div class="btn-group" role="group">
+              <button class="btn btn-primary btn-sm me-1" [routerLink]="['/editstudent', student.id]">
+                Edit
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="deleteHandler(student.id)">
+                Delete
+              </button>
+            </div>
           </td>
+        </tr>
+        <tr *ngIf="students.length === 0">
+          <td colspan="4" class="text-center">No students found</td>
         </tr>
       </tbody>
     </table>
-    <div class="container text-center mt-3">
-      <button class="btn btn-success" [routerLink]="['/addstudent']">Add New Student</button>
-    </div>
   </div>
   
+  <div class="text-center mt-3">
+    <button class="btn btn-success" [routerLink]="['/addstudent']">Add New Student</button>
+  </div>
+</div>

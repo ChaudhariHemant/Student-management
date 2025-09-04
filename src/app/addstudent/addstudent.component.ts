@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SamstrackService } from '../samstrack.service';
+import { StudentService } from '../student.service'; // Updated service name
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,13 +13,13 @@ export class AddstudentComponent {
     email: ""
   };
 
-  constructor(private s: SamstrackService, private r: Router) {}
+  constructor(private studentService: StudentService, private router: Router) {} // Updated service name
 
   submitHandler() {
-    this.s.addStudent(this.student).subscribe({
+    this.studentService.addStudent(this.student).subscribe({
       next: (res) => {
         alert("Student Added Successfully");
-        this.r.navigate(['/students']);  // Navigate to students list
+        this.router.navigate(['/students']);
       },
       error: (error: any) => {
         console.error("Error adding student:", error);

@@ -9,30 +9,36 @@ import { EditstudentComponent } from './editstudent/editstudent.component';
 
 const routes: Routes = [
   {
-     path:'',redirectTo:'students',pathMatch:'full'
+    path: '',
+    redirectTo: 'students',
+    pathMatch: 'full'
   },
   {
-    path:"comments",component:CommentComponent
+    path: 'students',
+    component: ShowstudentsComponent
   },
   {
-    path:"posts",component:PostComponent
+    path: 'addstudent',
+    component: AddstudentComponent
   },
   {
-    path:'news',component:NewsComponent
+    path: 'editstudent/:id',
+    component: EditstudentComponent
+  },
+  /*
+  {
+    path: 'comments',
+    component: CommentComponent
   },
   {
-    path:'students',component:ShowstudentsComponent
+    path: 'posts',
+    component: PostComponent
   },
   {
-    path:'addstudent',component:AddstudentComponent
-  },
-  {
-    path:'students/:id',component:ShowstudentsComponent
-  },
-  { path: 'editstudent/:id', component: EditstudentComponent }
-  // {
-  //   path:'student',component:AddstudentComponent
-  // }
+    path: 'news',
+    component: NewsComponent
+  }
+  */
 ];
 
 @NgModule({

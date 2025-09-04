@@ -1,5 +1,7 @@
+
+
 import { Component, OnInit } from '@angular/core';
-import { SamstrackService } from '../samstrack.service';
+import { StudentService } from '../student.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,18 +10,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./showstudents.component.css']
 })
 export class ShowstudentsComponent implements OnInit {
-  students: any[] = [];  // Ensure students is an array
+  students: any[] = [];
+  searchKeyword: string = '';
 
-  constructor(private s: SamstrackService, private r: Router) {}
+  constructor(private studentService: StudentService, private router: Router) {}
 
   ngOnInit() {
     this.getStudents();
   }
 
   getStudents() {
-    this.s.getStudent().subscribe({
+    this.studentService.getStudents().subscribe({
       next: (res) => {
-        this.students = res as any[]; // Ensure correct format
+        this.students = res;
         console.log('Students fetched:', res);
       },
       error: (error) => {
@@ -29,12 +32,28 @@ export class ShowstudentsComponent implements OnInit {
     });
   }
 
+  searchStudents() {
+    if (this.searchKeyword.trim()) {
+      this.studentService.searchStudents(this.searchKeyword).subscribe({
+        next: (res) => {
+          this.students = res;
+        },
+        error: (error) => {
+          console.error('Error searching students:', error);
+          alert('Failed to search students. Please try again.');
+        }
+      });
+    } else {
+      this.getStudents();
+    }
+  }
+
   deleteHandler(id: any) {
     if (confirm('Are you sure you want to delete this student?')) {
-      this.s.deleteStudent(id).subscribe({
+      this.studentService.deleteStudent(id).subscribe({
         next: () => {
           alert('Student deleted successfully.');
-          this.getStudents(); // Refresh list after deletion
+          this.getStudents();
         },
         error: (error) => {
           console.error('Error deleting student:', error);
